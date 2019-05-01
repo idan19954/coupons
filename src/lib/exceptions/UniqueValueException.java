@@ -1,4 +1,4 @@
-package exceptions;
+package lib.exceptions;
 
 public class UniqueValueException extends Exception {
     private String errorValue;

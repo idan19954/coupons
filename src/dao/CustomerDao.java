@@ -1,9 +1,9 @@
-package daoDbdao;
+package dao;
 
 import java.util.ArrayList;
 
 
-import javaBeans.Customer;
+import lib.model.Customer;
 
 public interface CustomerDao {
 	ArrayList<Customer> customers  = new ArrayList<Customer>();

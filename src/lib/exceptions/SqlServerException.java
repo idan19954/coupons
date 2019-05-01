@@ -1,4 +1,4 @@
-package exceptions;
+package lib.exceptions;
 
 public class SqlServerException extends Exception {
     private String source;

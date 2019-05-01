@@ -1,14 +1,14 @@
-package daoDbdao;
+package dao;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-import javaBeans.Company;
-import javaBeans.Coupon;
-import javaBeans.CouponType;
-import db.ConnectionPool;
-import exceptions.UniqueValueException;
-import exceptions.SqlServerException;
+import lib.model.Company;
+import lib.model.Coupon;
+import lib.model.utils.CouponType;
+import lib.db.ConnectionPool;
+import lib.exceptions.UniqueValueException;
+import lib.exceptions.SqlServerException;
 
 public class CompanyDbdao implements CompanyDao {
     private ConnectionPool pool = ConnectionPool.getInstance();
@@ -19,11 +19,11 @@ public class CompanyDbdao implements CompanyDao {
         try {
             Statement st = con.createStatement();
             String sql = String.format( "insert into companies values('%s', '%s', '%s')",
-                    company.getCompName(), company.getPassword(), company.getEmail() );
+                    company.getName(), company.getPassword(), company.getEmail() );
 
             int result = st.executeUpdate( sql );
             if ( result == 0 ) {
-                throw new UniqueValueException( "Company name already exists", company.getCompName() );
+                throw new UniqueValueException( "Company name already exists", company.getName() );
             }
             System.out.println( "Company created successfully" );
         } catch ( SQLException e ) {
@@ -44,10 +44,10 @@ public class CompanyDbdao implements CompanyDao {
 
             // PreparedStatement if safer (no sql injection) and better when using transactions
             PreparedStatement st = con.prepareStatement( "delete from companies where id = ?" );
-            st.setLong( 1, company.getID() );
+            st.setLong( 1, company.getId() );
 
             PreparedStatement st2 = con.prepareStatement( "delete from comp_coupon where compid = ?" );
-            st2.setLong( 1, company.getID() );
+            st2.setLong( 1, company.getId() );
 
             // try to execute the PreparedStatements
             int count1 = st.executeUpdate();
@@ -66,14 +66,13 @@ public class CompanyDbdao implements CompanyDao {
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public void updateCompany( Company company ) throws SqlServerException {
         Connection con = pool.getConnection();
         try {
             Statement st = con.createStatement();
             String sql = String.format( "update companies set email = %s, password = %s where id = %d",
-                    company.getEmail(), company.getPassword(), company.getID() );
+                    company.getEmail(), company.getPassword(), company.getId() );
             int res = st.executeUpdate( sql );
             if ( res == 0 ) {
                 throw new SqlServerException( "Error updating company", "updateCompany()" );
@@ -86,7 +85,6 @@ public class CompanyDbdao implements CompanyDao {
 
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public Company getCompany( long id ) {
         Company c = null;
@@ -112,7 +110,6 @@ public class CompanyDbdao implements CompanyDao {
 
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public ArrayList<Company> getAllCompanies() {
 
@@ -139,7 +136,6 @@ public class CompanyDbdao implements CompanyDao {
         return companies;
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public ArrayList<Coupon> getCompanyCoupons( long companyId ) {
 
@@ -170,7 +166,6 @@ public class CompanyDbdao implements CompanyDao {
         return coupons;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public long login( String companyName, String password ) {
         Connection con = pool.getConnection();
@@ -196,7 +191,4 @@ public class CompanyDbdao implements CompanyDao {
         }
         return -1;
     }
-}
-
-	
 }

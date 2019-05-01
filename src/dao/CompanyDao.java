@@ -1,12 +1,12 @@
-package daoDbdao;
+package dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import exceptions.SqlServerException;
-import exceptions.UniqueValueException;
-import javaBeans.Company;
-import javaBeans.Coupon;
+import lib.exceptions.SqlServerException;
+import lib.exceptions.UniqueValueException;
+import lib.model.Company;
+import lib.model.Coupon;
 
 
 public interface CompanyDao {
