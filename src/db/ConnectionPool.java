@@ -37,14 +37,14 @@ public class ConnectionPool {
 		 * @return The ConnectionPool object (instance)
 		 */
 		public static ConnectionPool getInstance() {
-			//if(instance == null) {
-			//	instance = new ConnectionPool();
-			//}
+			if(instance == null) {
+				instance = new ConnectionPool();
+			}
 			
 			return instance;
 		}
 		
-		public synchronized Connection getConnection() {
+		public synchronized  Connection getConnection() {
 			if(connections.isEmpty()) {
 				
 				try {
@@ -56,6 +56,7 @@ public class ConnectionPool {
 			}
 			Connection con = connections.get(connections.size()-1);
 			connections.remove(con);
+			
 			return con;
 		}
 		
