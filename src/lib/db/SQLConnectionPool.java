@@ -5,19 +5,19 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ConnectionPool {
-    // the ConnectionPool ONLY instance (object) - this will be returned using getInstance()
-    private static ConnectionPool instance = new ConnectionPool();
+public class SQLConnectionPool {
+    // the SQLConnectionPool ONLY instance (object) - this will be returned using getInstance()
+    private static SQLConnectionPool instance = new SQLConnectionPool();
     // the list of all connections in the pool
     private ArrayList<Connection> connections;
     // the max connections in the pool
     private static final int MAX_CONNECTIONS = 5;
 
     /**
-     * Private ctor for creating a new instance for the ConnectionPool singleton.
+     * Private ctor for creating a new instance for the SQLConnectionPool singleton.
      * Here we initialize the connections ArrayList
      */
-    private ConnectionPool() {
+    private SQLConnectionPool() {
         connections = new ArrayList<>();
         for ( int i = 0; i < MAX_CONNECTIONS; i++ ) {
             Connection con;
@@ -34,13 +34,13 @@ public class ConnectionPool {
     }
 
     /**
-     * The public getter for the ConnectionPool instance
+     * The public getter for the SQLConnectionPool instance
      *
-     * @return The ConnectionPool object (instance)
+     * @return The SQLConnectionPool object (instance)
      */
-    public static ConnectionPool getInstance() {
+    public static SQLConnectionPool getInstance() {
         if ( instance == null ) {
-            instance = new ConnectionPool();
+            instance = new SQLConnectionPool();
         }
 
         return instance;

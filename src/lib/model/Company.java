@@ -11,9 +11,8 @@ public class Company extends AuthUser implements ICouponable {
 
     private List<Coupon> coupons;
 
-    public Company( long id, String name, String password, String email, List<Coupon> coupons ) {
+    public Company( long id, String name, String password, String email ) {
         super( name, password, id );
-        this.coupons = coupons;
         this.id = id;
         this.email = email;
     }
