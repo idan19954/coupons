@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.*;
 
 import lib.db.SQLConnectionPool;
-import lib.model.Coupon;
-import lib.model.utils.CouponType;
+import model.Coupon;
+import model.utils.CouponType;
 
 public class CouponDaoImpl implements CouponDao {
     private SQLConnectionPool pool = SQLConnectionPool.getInstance();
@@ -57,8 +57,8 @@ public class CouponDaoImpl implements CouponDao {
     }
 
     @Override
-    public void create( Coupon coupon ) {
-
+    public int create( Coupon coupon ) {
+        return -1;
     }
 
     @Override
@@ -67,7 +67,7 @@ public class CouponDaoImpl implements CouponDao {
     }
 
     @Override
-    public void delete( Coupon coupon ) {
+    public void delete( long id ) {
 
     }
 }

@@ -11,9 +11,9 @@ public interface Dao<T> {
 
     T getOne( long id );
 
-    void create( T t ) throws UniqueValueException;
+    int create( T t ) throws UniqueValueException;
 
     void update( T t ) throws SqlServerException;
 
-    void delete( T t ) throws SQLException;
+    void delete( long id ) throws SQLException;
 }

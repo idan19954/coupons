@@ -4,32 +4,30 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SQLConnectionPool {
-    // the SQLConnectionPool ONLY instance (object) - this will be returned using getInstance()
     private static SQLConnectionPool instance = new SQLConnectionPool();
-    // the list of all connections in the pool
-    private ArrayList<Connection> connections;
-    // the max connections in the pool
     private static final int MAX_CONNECTIONS = 5;
+    private ArrayList<Connection> connections;
 
     /**
-     * Private ctor for creating a new instance for the SQLConnectionPool singleton.
+     * Private constructor for creating a new instance for the SQLConnectionPool singleton.
      * Here we initialize the connections ArrayList
      */
     private SQLConnectionPool() {
         connections = new ArrayList<>();
+
         for ( int i = 0; i < MAX_CONNECTIONS; i++ ) {
-            Connection con;
+            Connection connection;
+
             try {
-                Class.forName( "com.microsoft.jdbc.ClientDriver" );
-                con = DriverManager.getConnection( "jdbc:sqlserver://localhost:1433/database=Project;IntegratedSecurity=true;" );
-                connections.add( con );
-
-            } catch ( SQLException | ClassNotFoundException e ) {
-                System.out.println( e.getMessage() );
+                Class.forName( "com.mysql.jdbc.Driver" ).newInstance();
+                connection = DriverManager.getConnection( "jdbc:mysql://localhost:3306/coupons", "root", "" );
+                connections.add( connection );
+            } catch ( SQLException | ClassNotFoundException | IllegalAccessException | InstantiationException e ) {
+                e.printStackTrace();
             }
-
         }
     }
 
@@ -48,14 +46,13 @@ public class SQLConnectionPool {
 
     public synchronized Connection getConnection() {
         if ( connections.isEmpty() ) {
-
             try {
                 wait();
             } catch ( InterruptedException e ) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
+
         Connection con = connections.get( connections.size() - 1 );
         connections.remove( con );
 
@@ -65,26 +62,22 @@ public class SQLConnectionPool {
     /**
      * A method to return a used connection to the pool
      *
-     * @param con - the used connection to return
+     * @param connection - the used connection to return
      */
-    public synchronized void returnConnection( Connection con ) {
-        connections.add( con );
+    public synchronized void returnConnection( Connection connection ) {
+        connections.add( connection );
         notify();
     }
 
-    public void closeAllConnections( Connection con ) {
+    public void closeAllConnections() {
         for ( Connection connection : connections ) {
             try {
                 connection.close();
             } catch ( SQLException e ) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
-
-
     }
-
 }
 
 

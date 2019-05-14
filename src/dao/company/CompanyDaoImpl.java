@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lib.db.SQLConnectionPool;
-import lib.model.Company;
-import lib.model.Coupon;
-import lib.model.utils.CouponType;
+import model.Company;
+import model.Coupon;
+import model.utils.CouponType;
 import lib.exceptions.UniqueValueException;
 import lib.exceptions.SqlServerException;
 
@@ -16,10 +16,10 @@ public class CompanyDaoImpl implements CompanyDao {
     private Connection connection = pool.getConnection();
 
     @Override
-    public void create( Company company ) throws UniqueValueException {
+    public int create( Company company ) throws UniqueValueException {
         try {
             Statement st = connection.createStatement();
-            String query = String.format( "INSERT INTO companies VALUES ('%s', '%s', '%s')", company.getName(), company.getPassword(), company.getEmail() );
+            String query = String.format( "INSERT INTO companies (name, password, email) VALUES ('%s', '%s', '%s')", company.getName(), company.getPassword(), company.getEmail() );
             int result = st.executeUpdate( query );
 
             if ( result == 0 ) {
@@ -27,23 +27,27 @@ public class CompanyDaoImpl implements CompanyDao {
             } else {
                 System.out.println( "Company created successfully" );
             }
+
+            return 3756;
         } catch ( SQLException e ) {
             e.printStackTrace();
         } finally {
             pool.returnConnection( connection );
         }
+
+        return -1;
     }
 
     @Override
-    public void delete( Company company ) throws SQLException {
+    public void delete( long id ) throws SQLException {
         try {
             connection.setAutoCommit( false );
 
             PreparedStatement st = connection.prepareStatement( "DELETE FROM companies WHERE id = ?" );
-            st.setLong( 1, company.getId() );
+            st.setLong( 1, id );
 
             PreparedStatement st2 = connection.prepareStatement( "DELETE FROM comp_coupon WHERE compid = ?" );
-            st2.setLong( 1, company.getId() );
+            st2.setLong( 1, id );
 
             st.executeUpdate();
             st2.executeUpdate();
@@ -142,7 +146,7 @@ public class CompanyDaoImpl implements CompanyDao {
                 Date startDate = rs.getDate( 3 );
                 Date endDate = rs.getDate( 4 );
                 CouponType type = CouponType.valueOf( rs.getString( 10 ) );
-                coupons.add( new Coupon( coupondId, title, startDate, endDate, 0, 0, type ) );
+//                coupons.add( new Coupon( coupondId, title, startDate, endDate, 0, 0, type ) );
             }
 
         } catch ( SQLException e ) {

@@ -2,15 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80af9c2f-aa11-441e-aabf-16ccb5af55fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dao/Dao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__Arquillian_JUnit_Release.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MainApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dao/customer/CustomerDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/Calculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/DivisionByZeroException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/CalculatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/CompanyDaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/CompanyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/company/CompanyDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/CompanyDbdao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/company/CompanyDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdanSharami.iml" beforeDir="false" afterPath="$PROJECT_DIR$/IdanSharami.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/daoDbdao/CompanyDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/daoDbdao/CompanyDbdao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/daoDbdao/CouponDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/daoDbdao/CouponDbdao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/daoDbdao/CustomerDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/daoDbdao/CustomerDbdao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/db/ConnectionPool.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/exceptions/SqlServerException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/exceptions/UniqueValueException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/javaBeans/Company.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/javaBeans/Coupon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/javaBeans/CouponType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/javaBeans/Customer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/CustomerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/customer/CustomerDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/CustomerDbdao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/company/CompanyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/company/CompanyDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/company/CompanyDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/company/CompanyDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/coupon/CouponDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/coupon/CouponDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/coupon/CouponDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/coupon/CouponDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/db/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/db/SQLConnectionPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/model/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/model/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/model/Coupon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/model/Coupon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/db/SQLConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/db/SQLConnectionPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/model/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/model/Coupon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Coupon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/model/utils/AuthUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/utils/AuthUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/model/utils/CouponType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/utils/CouponType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/model/utils/ICouponable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/utils/ICouponable.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,23 +60,56 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Coupons" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Coupons" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Coupons" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="coupons: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Coupons" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="coupons: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="companies: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dao/company/CompanyDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+            <state relative-caret-position="264">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
-                <element signature="method#create#0;class#CompanyDaoImpl#0" />
-                <element signature="method#delete#0;class#CompanyDaoImpl#0" />
+                <element signature="imports" expanded="true" />
                 <element signature="method#update#0;class#CompanyDaoImpl#0" />
                 <element signature="method#getOne#0;class#CompanyDaoImpl#0" />
-                <element signature="method#getCompanyCoupons#0;class#CompanyDaoImpl#0" />
                 <element signature="method#login#0;class#CompanyDaoImpl#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MainApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -57,19 +120,22 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Arquillian JUnit Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>pool</find>
-      <find>Driver</find>
       <find>setType</find>
+      <find>Driver</find>
+      <find>System.out.println</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\omerm\coupons</dir>
+      <dir>C:\Users\omerm\coupons\src</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -95,14 +161,31 @@
         <option value="$PROJECT_DIR$/src/lib/model/Customer.java" />
         <option value="$PROJECT_DIR$/src/dao/coupon/CouponDao.java" />
         <option value="$PROJECT_DIR$/src/lib/db/ConnectionPool.java" />
-        <option value="$PROJECT_DIR$/src/lib/db/SQLConnectionPool.java" />
         <option value="$PROJECT_DIR$/src/dao/CompanyDbdao.java" />
         <option value="$PROJECT_DIR$/src/dao/CompanyDao.java" />
-        <option value="$PROJECT_DIR$/src/dao/Dao.java" />
         <option value="$PROJECT_DIR$/src/lib/model/Company.java" />
-        <option value="$PROJECT_DIR$/src/dao/company/CompanyDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/lib/model/Coupon.java" />
+        <option value="$PROJECT_DIR$/src/dao/CustomerDbdao.java" />
+        <option value="$PROJECT_DIR$/src/dao/CustomerDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/dao/customer/CustomerDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/dao/customer/CustomerDao.java" />
+        <option value="$PROJECT_DIR$/src/lib/test/CalculatorTest.java" />
+        <option value="$PROJECT_DIR$/src/lib/DivisionByZeroExcpetion.java" />
+        <option value="$PROJECT_DIR$/src/lib/divisionByZeroExcpetion.java" />
+        <option value="$PROJECT_DIR$/src/lib/divisionByZeroExceptions.java" />
+        <option value="$PROJECT_DIR$/src/lib/divisionByZeroException.java" />
+        <option value="$PROJECT_DIR$/src/lib/DivisionByZeroException.java" />
+        <option value="$PROJECT_DIR$/src/test/CalculatorTest.java" />
+        <option value="$PROJECT_DIR$/src/lib/Calculator.java" />
+        <option value="$PROJECT_DIR$/src/dao/Dao.java" />
+        <option value="$PROJECT_DIR$/src/test/CampnayDaoTest.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0d4c87da-d333-4a2d-be2d-497eb8b62aba/console.sql" />
         <option value="$PROJECT_DIR$/src/dao/coupon/CouponDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/CompanyDaoTest.java" />
+        <option value="$PROJECT_DIR$/src/lib/db/SQLConnectionPool.java" />
+        <option value="$PROJECT_DIR$/src/dao/company/CompanyDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/MainApplication.java" />
       </list>
     </option>
   </component>
@@ -119,8 +202,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -137,59 +218,57 @@
               <item name="IdanSharami" type="b2602c69:ProjectViewProjectNode" />
               <item name="coupons" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="IdanSharami" type="b2602c69:ProjectViewProjectNode" />
-              <item name="coupons" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-              <item name="company" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IdanSharami" type="b2602c69:ProjectViewProjectNode" />
-              <item name="coupons" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-              <item name="coupon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IdanSharami" type="b2602c69:ProjectViewProjectNode" />
-              <item name="coupons" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IdanSharami" type="b2602c69:ProjectViewProjectNode" />
-              <item name="coupons" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IdanSharami" type="b2602c69:ProjectViewProjectNode" />
-              <item name="coupons" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557079859237" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557853846775" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="database.console.LAST_STATE" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Desktop/mysql-connector-java-5.1.47.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="lib.test" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\omerm\coupons" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="lib" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -203,6 +282,69 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Application.MainApplication">
+    <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainApplication" />
+      <module name="IdanSharami" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IdanSharami" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.CalculatorTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculatorTest.division" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IdanSharami" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.CalculatorTest" />
+      <option name="METHOD_NAME" value="division" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculatorTest.pow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IdanSharami" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.CalculatorTest" />
+      <option name="METHOD_NAME" value="pow" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainApplication" />
+        <item itemvalue="JUnit.CalculatorTest.division" />
+        <item itemvalue="JUnit.CalculatorTest.pow" />
+        <item itemvalue="JUnit.CalculatorTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -215,11 +357,45 @@
       <updated>1556728918349</updated>
       <workItem from="1556728924453" duration="5932000" />
       <workItem from="1557075796584" duration="4225000" />
+      <workItem from="1557677957665" duration="4567000" />
+      <workItem from="1557851519000" duration="2310000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="CalculatorTest - 2019.05.12 at 20h 08m 12s.xml">
+      <configuration name="CalculatorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorTest - 2019.05.12 at 20h 10m 11s.xml">
+      <configuration name="CalculatorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorTest_pow - 2019.05.12 at 20h 10m 42s.xml">
+      <configuration name="CalculatorTest.pow" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorTest_pow - 2019.05.12 at 20h 14m 21s.xml">
+      <configuration name="CalculatorTest.pow" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorTest_division - 2019.05.12 at 20h 15m 56s.xml">
+      <configuration name="CalculatorTest.division" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorTest_division - 2019.05.12 at 20h 16m 36s.xml">
+      <configuration name="CalculatorTest.division" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorTest_division - 2019.05.12 at 20h 17m 08s.xml">
+      <configuration name="CalculatorTest.division" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorTest_division - 2019.05.12 at 20h 17m 35s.xml">
+      <configuration name="CalculatorTest.division" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorTest_division - 2019.05.12 at 20h 19m 49s.xml">
+      <configuration name="CalculatorTest.division" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculatorTest_division - 2019.05.12 at 20h 20m 25s.xml">
+      <configuration name="CalculatorTest.division" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10157000" />
+    <option name="totallyTimeSpent" value="17034000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -230,11 +406,12 @@
       <window_info id="UI Designer" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.25266525" />
+      <window_info id="Structure" order="5" sideWeight="0.5005417" side_tool="true" weight="0.2553305" />
+      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.49945828" visible="true" weight="0.25799572" />
+      <window_info anchor="bottom" id="Database Console" weight="0.32936078" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4539545" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -244,6 +421,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -267,17 +445,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lib/model/IAuthenticatable.java" />
-    <entry file="file://$PROJECT_DIR$/src/lib/model/utils/CouponType.java">
+    <entry file="file://$PROJECT_DIR$/src/model/utils/CouponType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/CustomerDbdao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -295,7 +466,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/model/utils/ICouponable.java">
+    <entry file="file://$PROJECT_DIR$/src/model/utils/ICouponable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="7" column="30" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="30" />
@@ -305,50 +476,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/model/utils/AuthUser.java">
+    <entry file="file://$PROJECT_DIR$/src/model/utils/AuthUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/model/Customer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/company/CompanyDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/model/Company.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="13" column="72" selection-start-line="13" selection-start-column="72" selection-end-line="13" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#582#583#0" expanded="true" />
-            <element signature="e#616#617#0" expanded="true" />
-            <element signature="e#643#644#0" expanded="true" />
-            <element signature="e#668#669#0" expanded="true" />
-            <element signature="e#892#893#0" expanded="true" />
-            <element signature="e#927#928#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/db/SQLConnectionPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -359,16 +490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/Dao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/sql/ResultSet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -376,20 +497,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/coupon/CouponDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#553#554#0" expanded="true" />
-            <element signature="e#580#581#0" expanded="true" />
-            <element signature="e#1706#1707#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/model/Coupon.java">
+    <entry file="file://$PROJECT_DIR$/src/model/Coupon.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="398">
           <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
@@ -437,17 +545,206 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/arquillian/junit/arquillian-junit-core/1.4.1.Final/arquillian-junit-core-1.4.1.Final.jar!/org/jboss/arquillian/junit/Arquillian.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/Throwable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/exceptions/SqlServerException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/DivisionByZeroException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+          <folding>
+            <element signature="e#124#125#0" expanded="true" />
+            <element signature="e#154#155#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Customer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/customer/CustomerDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/customer/CustomerDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#350#351#0" expanded="true" />
+            <element signature="e#377#378#0" expanded="true" />
+            <element signature="e#443#444#0" expanded="true" />
+            <element signature="e#470#471#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Company.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/Dao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/company/CompanyDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/CalculatorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="699">
+          <caret line="34" column="51" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/Calculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+          <folding>
+            <element signature="method#division#0;class#Calculator#0" />
+            <element signature="e#357#440#1" />
+            <element signature="e#460#493#1" />
+            <element signature="method#pow#0;class#Calculator#0" />
+            <element signature="e#632#701#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/0d4c87da-d333-4a2d-be2d-497eb8b62aba/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="32" column="50" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/sql/SQLException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/sql/DriverManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/db/SQLConnectionPool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="27" column="49" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/CompanyDaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/coupon/CouponDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1742#1743#0" expanded="true" />
+            <element signature="e#1767#1768#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://0d4c87da-d333-4a2d-be2d-497eb8b62aba/schema/coupons/table/companies">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/company/CompanyDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+        <state relative-caret-position="264">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
-            <element signature="method#create#0;class#CompanyDaoImpl#0" />
-            <element signature="method#delete#0;class#CompanyDaoImpl#0" />
+            <element signature="imports" expanded="true" />
             <element signature="method#update#0;class#CompanyDaoImpl#0" />
             <element signature="method#getOne#0;class#CompanyDaoImpl#0" />
-            <element signature="method#getCompanyCoupons#0;class#CompanyDaoImpl#0" />
             <element signature="method#login#0;class#CompanyDaoImpl#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -455,9 +752,80 @@
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>IdanSharami</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: Arquillian JUnit:Release</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
