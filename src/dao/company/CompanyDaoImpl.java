@@ -15,6 +15,12 @@ public class CompanyDaoImpl implements CompanyDao {
     private SQLConnectionPool pool = SQLConnectionPool.getInstance();
     private Connection connection = pool.getConnection();
 
+    /**
+     *
+     * @param company
+     * @return int
+     * @throws UniqueValueException
+     */
     @Override
     public int create( Company company ) throws UniqueValueException {
         try {
@@ -39,7 +45,7 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public void delete( long id ) throws SQLException {
+    public void delete( int id ) throws SQLException {
         try {
             connection.setAutoCommit( false );
 

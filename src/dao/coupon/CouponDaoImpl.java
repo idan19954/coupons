@@ -67,7 +67,7 @@ public class CouponDaoImpl implements CouponDao {
     }
 
     @Override
-    public void delete( long id ) {
+    public void delete( int id ) {
 
     }
 }

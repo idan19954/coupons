@@ -18,12 +18,13 @@ public class CompanyDaoTest {
 
         int id = companyDao.create( company );
         assertNotEquals( -1, id, "Company id should not be -1" );
-//        assertDoesNotThrow( SQLException.class, () -> companyDao.delete( id ), "wrf" );
+        companyDao.delete( id );
     }
 
     @Test
     void createSameCompanyTwice() {
         CompanyDaoImpl companyDao = new CompanyDaoImpl();
         Company company = new Company( 0, "Osem", "12345", "company@osem.com" );
+//        assertDoesNotThrow( SQLException.class, () -> companyDao.delete( id ), "wrf" );
     }
 }
