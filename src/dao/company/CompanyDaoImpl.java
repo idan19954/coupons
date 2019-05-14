@@ -1,23 +1,22 @@
 package dao.company;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
 import lib.db.SQLConnectionPool;
+import lib.exceptions.SqlServerException;
+import lib.exceptions.UniqueValueException;
 import model.Company;
 import model.Coupon;
 import model.utils.CouponType;
-import lib.exceptions.UniqueValueException;
-import lib.exceptions.SqlServerException;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CompanyDaoImpl implements CompanyDao {
     private SQLConnectionPool pool = SQLConnectionPool.getInstance();
     private Connection connection = pool.getConnection();
 
     /**
-     *
-     * @param company
+     * @param company Company
      * @return int
      * @throws UniqueValueException
      */
@@ -26,7 +25,8 @@ public class CompanyDaoImpl implements CompanyDao {
         try {
             Statement st = connection.createStatement();
             String query = String.format( "INSERT INTO companies (name, password, email) VALUES ('%s', '%s', '%s')", company.getName(), company.getPassword(), company.getEmail() );
-            int result = st.executeUpdate( query );
+            int result = st.executeUpdate( query, Statement.RETURN_GENERATED_KEYS );
+            ResultSet generatedKeys = st.getGeneratedKeys();
 
             if ( result == 0 ) {
                 throw new UniqueValueException( "Company name already exists: ", company.getName() );
@@ -34,7 +34,9 @@ public class CompanyDaoImpl implements CompanyDao {
                 System.out.println( "Company created successfully" );
             }
 
-            return 3756;
+            if ( generatedKeys.next() ) {
+                return generatedKeys.getInt( 1 );
+            }
         } catch ( SQLException e ) {
             e.printStackTrace();
         } finally {
@@ -52,7 +54,7 @@ public class CompanyDaoImpl implements CompanyDao {
             PreparedStatement st = connection.prepareStatement( "DELETE FROM companies WHERE id = ?" );
             st.setLong( 1, id );
 
-            PreparedStatement st2 = connection.prepareStatement( "DELETE FROM comp_coupon WHERE compid = ?" );
+            PreparedStatement st2 = connection.prepareStatement( "DELETE FROM company_coupon WHERE company_id = ?" );
             st2.setLong( 1, id );
 
             st.executeUpdate();
