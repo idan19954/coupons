@@ -1,4 +1,8 @@
 package facade;
 
-public class CustomerFacade extends ClientCouponFacade {
+public class CustomerFacade implements CouponClientFacade {
+    @Override
+    public CouponClientFacade login( String name, String password, UserType userType ) {
+        return null;
+    }
 }

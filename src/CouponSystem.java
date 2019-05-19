@@ -1,7 +1,4 @@
-import facade.AdminFacade;
-import facade.ClientCouponFacade;
-import facade.CompanyFacade;
-import facade.CustomerFacade;
+import facade.*;
 import lib.db.SQLConnectionPool;
 
 public class CouponSystem {
@@ -13,7 +10,7 @@ public class CouponSystem {
         return new CouponSystem();
     }
 
-    public ClientCouponFacade login( String name, String password, UserType userType ) {
+    public CouponClientFacade login( String name, String password, UserType userType ) {
         switch ( userType ) {
             case ADMIN:
                 return new AdminFacade();
