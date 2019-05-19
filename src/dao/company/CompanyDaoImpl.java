@@ -5,7 +5,6 @@ import lib.exceptions.SqlServerException;
 import lib.exceptions.UniqueValueException;
 import model.Company;
 import model.Coupon;
-import model.utils.CouponType;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,6 +24,7 @@ public class CompanyDaoImpl implements CompanyDao {
         try {
             Statement st = connection.createStatement();
             String query = String.format( "INSERT INTO companies (name, password, email) VALUES ('%s', '%s', '%s')", company.getName(), company.getPassword(), company.getEmail() );
+
             int result = st.executeUpdate( query, Statement.RETURN_GENERATED_KEYS );
             ResultSet generatedKeys = st.getGeneratedKeys();
 
@@ -51,7 +51,7 @@ public class CompanyDaoImpl implements CompanyDao {
         try {
             connection.setAutoCommit( false );
 
-            PreparedStatement st = connection.prepareStatement( "DELETE FROM companies WHERE id = ?" );
+            PreparedStatement st = connection.prepareStatement( "DELETE FROM companies WHERE company_id = ?" );
             st.setLong( 1, id );
 
             PreparedStatement st2 = connection.prepareStatement( "DELETE FROM company_coupon WHERE company_id = ?" );
@@ -92,7 +92,7 @@ public class CompanyDaoImpl implements CompanyDao {
         Company company = null;
 
         try {
-            PreparedStatement st = connection.prepareStatement( "SELECT * FROM companies WHERE id = ?" );
+            PreparedStatement st = connection.prepareStatement( "SELECT * FROM companies WHERE company_id = ?" );
             st.setLong( 1, id );
             ResultSet rs = st.executeQuery();
 
@@ -138,30 +138,46 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public ArrayList<Coupon> getCompanyCoupons( long companyId ) {
-
-        ArrayList<Coupon> coupons = new ArrayList<>();
-
+    public List<Coupon> getCompanyCoupons( long companyId ) {
+        List<Coupon> coupons = new ArrayList<>();
         Connection con = pool.getConnection();
+
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery( "select * from coupons join company_coupon "
-                    + "on coupons.couponid = company_coupon.couponid "
-                    + "where company_coupon.companyid = " + companyId );
-            while ( rs.next() ) {
-                long coupondId = rs.getLong( 1 );
-                String title = rs.getString( 2 );
-                Date startDate = rs.getDate( 3 );
-                Date endDate = rs.getDate( 4 );
-                CouponType type = CouponType.valueOf( rs.getString( 10 ) );
-//                coupons.add( new Coupon( coupondId, title, startDate, endDate, 0, 0, type ) );
-            }
 
+            ResultSet rs = st.executeQuery(
+                "SELECT * FROM coupons c " +
+                "JOIN company_coupon cc on cc.coupon_id = c.coupon_id " +
+                "WHERE cc.company_id = " + companyId
+            );
+
+            return fetchCoupons( rs );
         } catch ( SQLException e ) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
             pool.returnConnection( con );
+        }
+
+        return coupons;
+    }
+
+    public static List<Coupon> fetchCoupons( ResultSet rs ) throws SQLException {
+        List<Coupon> coupons = new ArrayList<>();
+
+        while ( rs.next() ) {
+            Coupon coupon = new Coupon();
+
+            coupon.setId( rs.getLong( "coupon_id" ) );
+            coupon.setTitle( rs.getString( "title" ) );
+            coupon.setMessage( rs.getString( "message" ) );
+            coupon.setImage( rs.getString( "image_path" ) );
+            coupon.setStartDate( rs.getDate( "start_date" ) );
+            coupon.setEndDate( rs.getDate( "end_date" ) );
+            coupon.setType( (rs.getString( "type" )) );
+            coupon.setAmount( rs.getInt( "amount" ) );
+            coupon.setPrice( rs.getDouble( "price" ) );
+
+            coupons.add( coupon );
         }
 
         return coupons;
@@ -172,7 +188,7 @@ public class CompanyDaoImpl implements CompanyDao {
         Connection con = pool.getConnection();
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery( "select id, password, companyName from companies "
+            ResultSet rs = st.executeQuery( "select company_id, password, companyName from companies "
                     + "where companyName like '" + companyName + "'" );
             if ( rs.next() ) {
                 String pass = rs.getString( "password" );

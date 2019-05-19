@@ -30,8 +30,8 @@ CREATE TABLE customer_coupon
 (
   customer_id int(5) NOT NULL,
   coupon_id   int(5) NOT NULL,
-  FOREIGN KEY (customer_id) REFERENCES customers (id),
-  FOREIGN KEY (coupon_id) REFERENCES coupons (id),
+  FOREIGN KEY (customer_id) REFERENCES customers (customer_id),
+  FOREIGN KEY (coupon_id) REFERENCES coupons (coupon_id),
   CONSTRAINT pk_customer_coupon PRIMARY KEY (customer_id, coupon_id)
 );
 
@@ -39,7 +39,7 @@ CREATE TABLE company_coupon
 (
   company_id int(5) NOT NULL,
   coupon_id  int(5) NOT NULL,
-  FOREIGN KEY (company_id) REFERENCES companies (id),
-  FOREIGN KEY (coupon_id) REFERENCES coupons (id),
+  FOREIGN KEY (company_id) REFERENCES companies (company_id),
+  FOREIGN KEY (coupon_id) REFERENCES coupons (coupon_id),
   CONSTRAINT pk_company_coupon PRIMARY KEY (company_id, coupon_id)
 );

@@ -1,34 +1,36 @@
 package dao.customer;
 
 
+import lib.exceptions.SqlServerException;
+import lib.exceptions.UniqueValueException;
 import model.Customer;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.List;
 
 public class CustomerDaoImpl implements CustomerDao {
-
     @Override
-    public void createCustomer() {
-
-    }
-
-    @Override
-    public void removeCustomer() {
-
-    }
-
-    @Override
-    public void updateCustomer() {
-
-    }
-
-    @Override
-    public String getCustomer() {
+    public List<Customer> getAll() {
         return null;
     }
 
     @Override
-    public ArrayList<Customer> getAllCustomers() {
+    public Customer getOne( long id ) {
         return null;
+    }
+
+    @Override
+    public int create( Customer customer ) throws UniqueValueException {
+        return 0;
+    }
+
+    @Override
+    public void update( Customer customer ) throws SqlServerException {
+
+    }
+
+    @Override
+    public void delete( int id ) throws SQLException {
+
     }
 }

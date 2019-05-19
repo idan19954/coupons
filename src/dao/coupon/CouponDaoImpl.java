@@ -1,14 +1,16 @@
 package dao.coupon;
 
+import dao.company.CompanyDaoImpl;
+import lib.db.SQLConnectionPool;
+import model.Coupon;
+import model.utils.CouponType;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.*;
-
-import lib.db.SQLConnectionPool;
-import model.Coupon;
-import model.utils.CouponType;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CouponDaoImpl implements CouponDao {
     private SQLConnectionPool pool = SQLConnectionPool.getInstance();
@@ -27,21 +29,7 @@ public class CouponDaoImpl implements CouponDao {
             Statement st = this.connection.createStatement();
             ResultSet rs = st.executeQuery( "SELECT * FROM coupons" );
 
-            while ( rs.next() ) {
-                Coupon coupon = new Coupon();
-
-                coupon.setId( rs.getLong( "id" ) );
-                coupon.setTitle( rs.getString( "title" ) );
-                coupon.setMessage( rs.getString( "message" ) );
-                coupon.setImage( rs.getString( "image" ) );
-                coupon.setStartDate( rs.getDate( "start_date" ) );
-                coupon.setEndDate( rs.getDate( "end_date" ) );
-                coupon.setType( ( rs.getString( "coupon_type" ) ) );
-                coupon.setAmount( rs.getInt( "amount" ) );
-                coupon.setPrice( rs.getDouble( "price" ) );
-
-                coupons.add( coupon );
-            }
+            return CompanyDaoImpl.fetchCoupons( rs );
         } catch ( SQLException e ) {
 
         } finally {

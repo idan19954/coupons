@@ -24,7 +24,6 @@ class CompanyDaoTest {
 
     @Test
     void createSameCompanyTwice() {
-
         CompanyDaoImpl companyDao = new CompanyDaoImpl();
         Company company = new Company( 0, UUID.randomUUID().toString(), "12345", "company@osem.com" );
 

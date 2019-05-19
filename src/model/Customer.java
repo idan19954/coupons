@@ -33,5 +33,3 @@ public class Customer extends AuthUser implements ICouponable {
                 '}';
     }
 }
-
-
