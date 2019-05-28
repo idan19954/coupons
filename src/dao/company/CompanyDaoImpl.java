@@ -184,28 +184,7 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public long login( String companyName, String password ) {
-        Connection con = pool.getConnection();
-        try {
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery( "select company_id, password, companyName from companies "
-                    + "where companyName like '" + companyName + "'" );
-            if ( rs.next() ) {
-                String pass = rs.getString( "password" );
-                if ( password.equals( pass ) ) {
-                    return rs.getLong( "id" ); // name and password match!
-                } else {
-                    return -1; // password incorrect
-                }
-            } else { // no such companyName
-                return -1;
-            }
-
-
-        } catch ( SQLException e ) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return -1;
+    public boolean login( String companyName, String password ) {
+        return true;
     }
 }

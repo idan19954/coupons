@@ -1,9 +1,10 @@
 package facade;
 
 import dao.company.CompanyDao;
+import dao.company.CompanyDaoImpl;
 
 public class CompanyFacade implements CouponClientFacade {
-    CompanyDao companyDao;
+    CompanyDao companyDao = new CompanyDaoImpl();
 
     public CompanyFacade() {
 

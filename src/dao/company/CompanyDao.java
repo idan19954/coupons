@@ -10,5 +10,5 @@ import java.util.List;
 public interface CompanyDao extends Dao<Company> {
     List<Coupon> getCompanyCoupons( long companyId );
 
-    long login( String companyName, String password );
+    boolean login( String companyName, String password );
 }

@@ -33,4 +33,11 @@ public class CustomerDaoImpl implements CustomerDao {
     public void delete( int id ) throws SQLException {
 
     }
+
+
+
+    @Override
+    public boolean login( String customerName, String password ) {
+        return false;
+    }
 }
