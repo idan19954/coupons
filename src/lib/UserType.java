@@ -1,4 +1,4 @@
-package facade;
+package lib;
 
 public enum UserType {
     ADMIN,

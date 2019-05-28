@@ -1,12 +1,14 @@
-package facade;
+package facade.company;
 
 import dao.company.CompanyDao;
 import dao.company.CompanyDaoImpl;
+import facade.CouponClientFacade;
+import lib.UserType;
 
-public class CompanyFacade implements CouponClientFacade {
+public class CompanyFacadeImpl implements CompanyFacade {
     CompanyDao companyDao = new CompanyDaoImpl();
 
-    public CompanyFacade() {
+    public CompanyFacadeImpl() {
 
     }
 

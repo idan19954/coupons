@@ -1,4 +1,8 @@
 import facade.*;
+import facade.admin.AdminFacadeImpl;
+import facade.company.CompanyFacadeImpl;
+import facade.customer.CustomerFacadeImpl;
+import lib.UserType;
 import lib.db.SQLConnectionPool;
 import tasks.DailyCouponExpirationTask;
 
@@ -18,19 +22,19 @@ public class CouponSystem {
         switch ( userType ) {
             case ADMIN:
                 try {
-                    AdminFacade adminFacade = new AdminFacade();
-                    return adminFacade.login( name, password, UserType.ADMIN );
+                    AdminFacadeImpl adminFacadeImpl = new AdminFacadeImpl();
+                    return adminFacadeImpl.login( name, password, UserType.ADMIN );
                 } catch ( Exception e ) {
                     e.printStackTrace();
                 }
 
             case CUSTOMER:
-                return new CustomerFacade();
+                return new CustomerFacadeImpl();
 
             case COMPANY:
                 try {
-                    CompanyFacade companyFacade = new CompanyFacade();
-                    return companyFacade.login( name, password, UserType.COMPANY );
+                    CompanyFacadeImpl companyFacadeImpl = new CompanyFacadeImpl();
+                    return companyFacadeImpl.login( name, password, UserType.COMPANY );
                 } catch ( Exception e ) {
                     e.printStackTrace();
                 }

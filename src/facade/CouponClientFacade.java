@@ -1,5 +1,6 @@
 package facade;
 
+import lib.UserType;
 import lib.exceptions.AuthenticationFailedException;
 
 public interface CouponClientFacade {
