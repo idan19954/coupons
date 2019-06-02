@@ -1,8 +1,8 @@
+import facade.admin.AdminFacade;
+import facade.admin.AdminFacadeImpl;
 import facade.company.CompanyFacadeImpl;
 import facade.customer.CustomerFacadeImpl;
 import lib.UserType;
-import facade.admin.AdminFacade;
-import facade.admin.AdminFacadeImpl;
 
 import java.util.Scanner;
 
@@ -21,13 +21,12 @@ public class MainApplication {
         int userType = scanner.nextInt();
 
         if ( userType == 1 ) {
-            AdminFacade facade = (AdminFacadeImpl) ( couponSystem.login( "ergtretgh", "1234", UserType.ADMIN ));
-
-
+            AdminFacade facade = (AdminFacadeImpl) (couponSystem.login( "ergtretgh", "1234", UserType.ADMIN ));
         } else if ( userType == 2 ) {
-            CustomerFacadeImpl facade = (CustomerFacadeImpl) ( couponSystem.login( "omersCompany", "mypassword", UserType.CUSTOMER ));
+            CustomerFacadeImpl facade = (CustomerFacadeImpl) (couponSystem.login( "idan", "123451", UserType.CUSTOMER ));
+
         } else if ( userType == 3 ) {
-            CompanyFacadeImpl facade = (CompanyFacadeImpl)( couponSystem.login( "omersCompany", "mypassword", UserType.COMPANY ));
+            CompanyFacadeImpl facade = (CompanyFacadeImpl) (couponSystem.login( "omersCompany", "mypassword", UserType.COMPANY ));
         }
     }
 }

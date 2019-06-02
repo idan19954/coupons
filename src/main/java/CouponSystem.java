@@ -14,7 +14,7 @@ public class CouponSystem {
         this.task.run();
     }
 
-    public static CouponSystem getInstance() {
+    static CouponSystem getInstance() {
         return new CouponSystem();
     }
 
@@ -23,18 +23,26 @@ public class CouponSystem {
             case ADMIN:
                 try {
                     AdminFacadeImpl adminFacadeImpl = new AdminFacadeImpl();
-                    return adminFacadeImpl.login( name, password, UserType.ADMIN );
+
+                    return adminFacadeImpl.login( name, password );
                 } catch ( Exception e ) {
                     e.printStackTrace();
                 }
 
             case CUSTOMER:
-                return new CustomerFacadeImpl();
+                try {
+                    CustomerFacadeImpl customerFacadeImpl = new CustomerFacadeImpl();
+
+                    return customerFacadeImpl.login( name, password );
+                } catch ( Exception e ) {
+                    e.printStackTrace();
+                }
 
             case COMPANY:
                 try {
                     CompanyFacadeImpl companyFacadeImpl = new CompanyFacadeImpl();
-                    return companyFacadeImpl.login( name, password, UserType.COMPANY );
+
+                    return companyFacadeImpl.login( name, password );
                 } catch ( Exception e ) {
                     e.printStackTrace();
                 }

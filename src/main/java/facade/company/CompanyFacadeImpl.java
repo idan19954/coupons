@@ -5,7 +5,6 @@ import dao.company.CompanyDaoImpl;
 import dao.coupon.CouponDao;
 import dao.coupon.CouponDaoImpl;
 import facade.CouponClientFacade;
-import lib.UserType;
 import lib.exceptions.SqlServerException;
 import lib.exceptions.UniqueValueException;
 import model.Coupon;
@@ -20,7 +19,7 @@ public class CompanyFacadeImpl implements CompanyFacade {
     }
 
     @Override
-    public CouponClientFacade login( String name, String password, UserType userType ) {
+    public CouponClientFacade login( String name, String password ) {
         return null;
     }
 

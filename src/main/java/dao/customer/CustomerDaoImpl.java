@@ -4,8 +4,6 @@ package dao.customer;
 import lib.db.SQLConnectionPool;
 import lib.exceptions.SqlServerException;
 import lib.exceptions.UniqueValueException;
-import model.Company;
-import model.Coupon;
 import model.Customer;
 
 import java.sql.*;
@@ -16,12 +14,10 @@ public class CustomerDaoImpl implements CustomerDao {
     private SQLConnectionPool pool = SQLConnectionPool.getInstance();
     private Connection connection = pool.getConnection();
 
-
     @Override
     public List<Customer> getAll() {
         ArrayList<Customer> customers = new ArrayList<>();
 
-        Connection connection = pool.getConnection();
         try {
             Statement st = connection.createStatement();
 
@@ -32,7 +28,7 @@ public class CustomerDaoImpl implements CustomerDao {
                 String name = rs.getString( 2 );
                 String password = rs.getString( 3 );
 
-                customers.add( new Customer( id,name,password) );
+                customers.add( new Customer( id, name, password ) );
             }
 
         } catch ( SQLException e ) {
@@ -45,13 +41,10 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
 
-
-
     @Override
     public Customer getOne( long id ) {
-
         Customer customer = null;
-            Connection connection = pool.getConnection();
+
         try {
             PreparedStatement st = connection.prepareStatement( "SELECT * FROM customers WHERE customer_id = ?" );
             st.setLong( 1, id );
@@ -61,7 +54,7 @@ public class CustomerDaoImpl implements CustomerDao {
                 String name = rs.getString( 2 );
                 String password = rs.getString( 3 );
 
-                customer = new Customer(id,name,password);
+                customer = new Customer( id, name, password );
             }
         } catch ( SQLException e ) {
 
@@ -75,11 +68,9 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public int create( Customer customer ) throws UniqueValueException {
-
-       Connection connection = pool.getConnection();
         try {
             Statement st = connection.createStatement();
-            String query = String.format( "INSERT INTO customers (name, password ) VALUES ('%s', '%s')", customer.getName(), customer.getPassword());
+            String query = String.format( "INSERT INTO customers (name, password ) VALUES ('%s', '%s')", customer.getName(), customer.getPassword() );
 
             int result = st.executeUpdate( query, Statement.RETURN_GENERATED_KEYS );
             ResultSet generatedKeys = st.getGeneratedKeys();
@@ -104,11 +95,9 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public void update( Customer customer ) throws SqlServerException {
-
-        Connection connection = pool.getConnection();
         try {
             Statement st = connection.createStatement();
-            String sql = String.format( "UPDATE customers SET password = %s WHERE id = %d",  customer.getPassword(), customer.getId() );
+            String sql = String.format( "UPDATE customers SET password = %s WHERE id = %d", customer.getPassword(), customer.getId() );
             int result = st.executeUpdate( sql );
 
             if ( result == 0 ) {
@@ -119,13 +108,10 @@ public class CustomerDaoImpl implements CustomerDao {
         } finally {
             pool.returnConnection( connection );
         }
-
     }
 
     @Override
     public void delete( long id ) throws SQLException {
-
-       Connection connection = pool.getConnection();
         try {
             connection.setAutoCommit( false );
 
@@ -147,21 +133,23 @@ public class CustomerDaoImpl implements CustomerDao {
         }
 
     }
+
+    /*
     public List<Coupon> getCustomerCoupons() {
-        ArrayList<Coupon> customercoupons = new ArrayList<>();
+        ArrayList<Coupon> customerCoupons = new ArrayList<>();
 
         Connection connection = pool.getConnection();
         try {
             Statement st = connection.createStatement();
 
-            ResultSet rs = st.executeQuery( "select * from custoner_coupon WHERE customer_id = ?" );
+            ResultSet rs = st.executeQuery( "SELECT * FROM customer_coupon WHERE customer_id = ?" );
 
             while ( rs.next() ) {
                 long id = rs.getLong( 1 );
                 String name = rs.getString( 2 );
                 String password = rs.getString( 3 );
 
-                customercoupons.add( new Coupon(title,) );
+                customerCoupons.add( new Coupon( title, ) );
             }
 
         } catch ( SQLException e ) {
@@ -172,10 +160,28 @@ public class CustomerDaoImpl implements CustomerDao {
 
         return customers;
     }
-
+    */
 
     @Override
     public boolean login( String customerName, String password ) {
-        return false;
+        try {
+            int exists = 0;
+            PreparedStatement st = this.connection.prepareStatement( "SELECT COUNT(*) as `exists` FROM customers WHERE name = ? AND password = ?" );
+
+            st.setString( 1, customerName );
+            st.setString( 2, password );
+
+            ResultSet rs = st.executeQuery();
+
+            while ( rs.next() ) {
+                exists = rs.getInt( "exists" );
+            }
+
+            return exists == 1;
+        } catch ( SQLException e ) {
+            e.printStackTrace();
+
+            return false;
+        }
     }
 }
