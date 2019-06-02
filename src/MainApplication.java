@@ -22,7 +22,7 @@ public class MainApplication {
 
         if ( userType == 1 ) {
             AdminFacade facade = (AdminFacadeImpl) ( couponSystem.login( "ergtretgh", "1234", UserType.ADMIN ));
-            facade.getAllCustomers();
+
 
         } else if ( userType == 2 ) {
             CustomerFacadeImpl facade = (CustomerFacadeImpl) ( couponSystem.login( "omersCompany", "mypassword", UserType.CUSTOMER ));

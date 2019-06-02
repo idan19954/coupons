@@ -2,6 +2,8 @@ package facade.company;
 
 import dao.company.CompanyDao;
 import dao.company.CompanyDaoImpl;
+import dao.coupon.CouponDao;
+import dao.coupon.CouponDaoImpl;
 import facade.CouponClientFacade;
 import lib.UserType;
 import lib.exceptions.SqlServerException;
@@ -11,6 +13,8 @@ import model.Coupon;
 public class CompanyFacadeImpl implements CompanyFacade {
     CompanyDao companyDao = new CompanyDaoImpl();
 
+
+    CouponDao  couponDao = new CouponDaoImpl();
     public CompanyFacadeImpl() {
 
     }
@@ -20,12 +24,11 @@ public class CompanyFacadeImpl implements CompanyFacade {
         return null;
     }
 
-    public void addNewCoupon() {
-
-    }
 
     @Override
     public Coupon addNewCoupon(Coupon coupon) throws UniqueValueException {
+
+
         return null;
     }
 

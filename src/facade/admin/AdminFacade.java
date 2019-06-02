@@ -6,26 +6,27 @@ import lib.exceptions.UniqueValueException;
 import model.Company;
 import model.Customer;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface AdminFacade extends CouponClientFacade {
-    int addNewCompany( Company company ) throws UniqueValueException;
+    void addNewCompany( Company company ) throws UniqueValueException;
 
-    void deleteCompany( int id ) throws SqlServerException;
+    void deleteCompany( Company company ) throws  SQLException;
 
-    void updateCompany( int id ) throws SqlServerException;
+    void updateCompany(Company company ) throws SQLException, SqlServerException;
 
-    List<Company> getAllCompanies();
+    List<Company> getAllCompanies()throws SQLException;
 
-    Company getOneCompany( int id ) throws SqlServerException;
+    Company getOneCompany( long id ) throws SQLException;
 
-    int addNewCustomer( Customer customer ) throws UniqueValueException;
+    void addNewCustomer( Customer customer ) throws UniqueValueException;
 
-    boolean deleteCustomer( int id ) throws SqlServerException;
+    void deleteCustomer( long id ) throws SQLException;
 
-    boolean updateCustomer( Customer customer ) throws SqlServerException;
+    void updateCustomer( Customer customer ) throws SQLException;
 
-    List<Customer> getAllCustomers();
+    List<Customer> getAllCustomers()throws SQLException;
 
-    Customer getOneCustomer( int id ) throws SqlServerException;
+    Customer getOneCustomer( long id ) throws SQLException;
 }

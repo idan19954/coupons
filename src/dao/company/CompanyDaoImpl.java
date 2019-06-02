@@ -47,7 +47,7 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public void delete( int id ) throws SQLException {
+    public void delete( long id ) throws SQLException {
         try {
             connection.setAutoCommit( false );
 
@@ -56,6 +56,8 @@ public class CompanyDaoImpl implements CompanyDao {
 
             PreparedStatement st2 = connection.prepareStatement( "DELETE FROM company_coupon WHERE company_id = ?" );
             st2.setLong( 1, id );
+
+
 
             st.executeUpdate();
             st2.executeUpdate();
@@ -88,7 +90,7 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public Company getOne( long id ) {
+    public Company getOne( long id ) throws SQLException{
         Company company = null;
 
         try {
@@ -112,7 +114,7 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public List<Company> getAll() {
+    public List<Company> getAll() throws SQLException{
         ArrayList<Company> companies = new ArrayList<>();
 
         Connection con = pool.getConnection();
@@ -138,7 +140,7 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public List<Coupon> getCompanyCoupons( long companyId ) {
+    public List<Coupon> getCompanyCoupons( long companyId ) throws SQLException{
         List<Coupon> coupons = new ArrayList<>();
         Connection con = pool.getConnection();
 
