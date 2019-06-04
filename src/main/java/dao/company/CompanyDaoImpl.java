@@ -47,7 +47,7 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public void delete( long id ) throws SQLException {
+    public void delete( int id ) throws SQLException {
         try {
             connection.setAutoCommit( false );
 
@@ -88,7 +88,7 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public Company getOne( long id ) throws SQLException {
+    public Company getOne( int id ) {
         Company company = null;
 
         try {
@@ -121,7 +121,7 @@ public class CompanyDaoImpl implements CompanyDao {
             ResultSet rs = st.executeQuery( "select * from companies" );
 
             while ( rs.next() ) {
-                long id = rs.getLong( 1 );
+                int id = rs.getInt( 1 );
                 String name = rs.getString( 2 );
                 String password = rs.getString( 3 );
                 String email = rs.getString( 4 );
@@ -138,7 +138,7 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public List<Coupon> getCompanyCoupons( long companyId ) throws SQLException {
+    public List<Coupon> getCompanyCoupons( int companyId ) throws SQLException {
         List<Coupon> coupons = new ArrayList<>();
         Connection con = pool.getConnection();
 
@@ -146,9 +146,9 @@ public class CompanyDaoImpl implements CompanyDao {
             Statement st = con.createStatement();
 
             ResultSet rs = st.executeQuery(
-                "SELECT * FROM coupons c " +
-                "JOIN company_coupon cc on cc.coupon_id = c.coupon_id " +
-                "WHERE cc.company_id = " + companyId
+                    "SELECT * FROM coupons c " +
+                    "JOIN company_coupon cc on cc.coupon_id = c.coupon_id " +
+                    "WHERE cc.company_id = " + companyId
             );
 
             return fetchCoupons( rs );
@@ -167,7 +167,7 @@ public class CompanyDaoImpl implements CompanyDao {
         while ( rs.next() ) {
             Coupon coupon = new Coupon();
 
-            coupon.setId( rs.getLong( "coupon_id" ) );
+            coupon.setId( rs.getInt( "coupon_id" ) );
             coupon.setTitle( rs.getString( "title" ) );
             coupon.setMessage( rs.getString( "message" ) );
             coupon.setImage( rs.getString( "image_path" ) );
@@ -185,6 +185,24 @@ public class CompanyDaoImpl implements CompanyDao {
 
     @Override
     public boolean login( String companyName, String password ) {
-        return true;
+        try {
+            int exists = 0;
+            PreparedStatement st = this.connection.prepareStatement( "SELECT COUNT(*) as `exists` FROM companies WHERE name = ? AND password = ?" );
+
+            st.setString( 1, companyName );
+            st.setString( 2, password );
+
+            ResultSet rs = st.executeQuery();
+
+            while ( rs.next() ) {
+                exists = rs.getInt( "exists" );
+            }
+
+            return exists == 1;
+        } catch ( SQLException e ) {
+            e.printStackTrace();
+
+            return false;
+        }
     }
 }

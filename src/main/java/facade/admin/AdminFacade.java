@@ -18,15 +18,15 @@ public interface AdminFacade extends CouponClientFacade {
 
     List<Company> getAllCompanies()throws SQLException;
 
-    Company getOneCompany( long id ) throws SQLException;
+    Company getOneCompany( int id ) throws SQLException;
 
     void addNewCustomer( Customer customer ) throws UniqueValueException;
 
-    void deleteCustomer( long id ) throws SQLException;
+    void deleteCustomer( int id ) throws SQLException;
 
     void updateCustomer( Customer customer ) throws SQLException;
 
     List<Customer> getAllCustomers()throws SQLException;
 
-    Customer getOneCustomer( long id ) throws SQLException;
+    Customer getOneCustomer( int id ) throws SQLException;
 }

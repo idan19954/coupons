@@ -61,7 +61,7 @@ public class AdminFacadeImpl implements AdminFacade {
     }
 
     @Override
-    public Company getOneCompany( long id ) throws SQLException {
+    public Company getOneCompany( int id ) throws SQLException {
         return companyDao.getOne( id );
     }
 
@@ -71,7 +71,7 @@ public class AdminFacadeImpl implements AdminFacade {
     }
 
     @Override
-    public void deleteCustomer( long id ) throws SQLException {
+    public void deleteCustomer( int id ) throws SQLException {
         customerDao.delete( id );
     }
 
@@ -90,7 +90,7 @@ public class AdminFacadeImpl implements AdminFacade {
     }
 
     @Override
-    public Customer getOneCustomer( long id ) throws SQLException {
+    public Customer getOneCustomer( int id ) throws SQLException {
         return customerDao.getOne( id );
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public interface CompanyDao extends Dao<Company> {
-    List<Coupon> getCompanyCoupons( long companyId ) throws SQLException;
+    List<Coupon> getCompanyCoupons( int companyId ) throws SQLException;
 
     boolean login( String companyName, String password );
 }

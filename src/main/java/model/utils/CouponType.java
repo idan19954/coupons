@@ -1,11 +1,11 @@
 package model.utils;
 
 public enum CouponType {
-    RESTURANTS,
+    RESTAURANT,
     ELECTRICITY,
     FOOD,
     HEALTH,
     SPORTS,
     CAMPING,
-    TRAVELLING;
+    TRAVELING;
 }

@@ -4,7 +4,9 @@ package dao.customer;
 import lib.db.SQLConnectionPool;
 import lib.exceptions.SqlServerException;
 import lib.exceptions.UniqueValueException;
+import model.Coupon;
 import model.Customer;
+import model.utils.CouponType;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ public class CustomerDaoImpl implements CustomerDao {
             ResultSet rs = st.executeQuery( "select * from customers" );
 
             while ( rs.next() ) {
-                long id = rs.getLong( 1 );
+                int id = rs.getInt( 1 );
                 String name = rs.getString( 2 );
                 String password = rs.getString( 3 );
 
@@ -42,22 +44,23 @@ public class CustomerDaoImpl implements CustomerDao {
 
 
     @Override
-    public Customer getOne( long id ) {
+    public Customer getOne( int customerId ) {
         Customer customer = null;
 
         try {
             PreparedStatement st = connection.prepareStatement( "SELECT * FROM customers WHERE customer_id = ?" );
-            st.setLong( 1, id );
+            st.setLong( 1, customerId );
             ResultSet rs = st.executeQuery();
 
             if ( rs.next() ) {
                 String name = rs.getString( 2 );
                 String password = rs.getString( 3 );
 
-                customer = new Customer( id, name, password );
+                customer = new Customer( customerId, name, password );
+                customer.setCoupons( this.fetchCustomerCoupons( customerId ) );
             }
         } catch ( SQLException e ) {
-
+            e.printStackTrace();
         } finally {
             pool.returnConnection( connection );
         }
@@ -111,7 +114,7 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
-    public void delete( long id ) throws SQLException {
+    public void delete( int id ) throws SQLException {
         try {
             connection.setAutoCommit( false );
 
@@ -134,39 +137,48 @@ public class CustomerDaoImpl implements CustomerDao {
 
     }
 
-    /*
-    public List<Coupon> getCustomerCoupons() {
-        ArrayList<Coupon> customerCoupons = new ArrayList<>();
+    @Override
+    public List<Coupon> fetchCustomerCoupons( int customerId ) {
+        List<Coupon> customerCoupons = new ArrayList<>();
 
-        Connection connection = pool.getConnection();
         try {
-            Statement st = connection.createStatement();
+            PreparedStatement st = connection.prepareStatement(
+                "SELECT customer_id, coupons.*\n" +
+                "FROM customer_coupon\n" +
+                "JOIN coupons ON customer_coupon.coupon_id = coupons.coupon_id\n" +
+                "WHERE customer_id = ?"
+            );
 
-            ResultSet rs = st.executeQuery( "SELECT * FROM customer_coupon WHERE customer_id = ?" );
+            st.setInt( 1, customerId );
+            ResultSet rs = st.executeQuery();
 
             while ( rs.next() ) {
-                long id = rs.getLong( 1 );
-                String name = rs.getString( 2 );
-                String password = rs.getString( 3 );
+                int id = rs.getInt( "customer_id" );
+                String title = rs.getString( "title" );
+                Date start_date = rs.getDate("start_date");
+                Date end_date = rs.getDate( "end_date" );
+                int amount = rs.getInt( "amount" );
+                CouponType type = CouponType.valueOf( rs.getString( "type" ) );
+                String message = rs.getString( "message" );
+                double price = rs.getDouble( "price" );
+                String image = rs.getString( "image_path" );
 
-                customerCoupons.add( new Coupon( title, ) );
+                customerCoupons.add( new Coupon( id, title, start_date, end_date, amount, type, message, price, image ) );
             }
-
         } catch ( SQLException e ) {
-
+            e.printStackTrace();
         } finally {
             pool.returnConnection( connection );
         }
 
-        return customers;
+        return customerCoupons;
     }
-    */
 
     @Override
     public boolean login( String customerName, String password ) {
         try {
             int exists = 0;
-            PreparedStatement st = this.connection.prepareStatement( "SELECT COUNT(*) as `exists` FROM customers WHERE name = ? AND password = ?" );
+            PreparedStatement st = connection.prepareStatement( "SELECT COUNT(*) as `exists` FROM customers WHERE name = ? AND password = ?" );
 
             st.setString( 1, customerName );
             st.setString( 2, password );

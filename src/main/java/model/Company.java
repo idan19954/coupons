@@ -5,25 +5,25 @@ import model.utils.ICouponable;
 import java.util.*;
 
 public class Company implements ICouponable {
-    private long id;
+    private int id;
     private String name;
     private String password;
     private String email;
 
     private List<Coupon> coupons;
 
-    public Company( long id, String name, String password, String email ) {
+    public Company( int id, String name, String password, String email ) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.email = email;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

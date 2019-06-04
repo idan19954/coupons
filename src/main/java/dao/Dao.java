@@ -9,11 +9,11 @@ import java.util.List;
 public interface Dao<T> {
     List<T> getAll() throws SQLException;
 
-    T   getOne( long id ) throws SQLException;
+    T   getOne( int id ) throws SQLException;
 
     int create( T t ) throws UniqueValueException;
 
     void update( T t ) throws SqlServerException;
 
-    void delete( long id ) throws SQLException;
+    void delete( int id ) throws SQLException;
 }

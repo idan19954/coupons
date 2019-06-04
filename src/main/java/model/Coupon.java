@@ -5,18 +5,18 @@ import model.utils.CouponType;
 import java.sql.Date;
 
 public class Coupon {
-    private long id;
+    private int id;
     private String title, message, image;
     private Date startDate, endDate;
     private int amount;
     private CouponType type;
     private double price;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId( long id ) {
+    public void setId( int id ) {
         this.id = id;
     }
 
@@ -92,7 +92,7 @@ public class Coupon {
 
     }
 
-    public Coupon( long id, String title, Date startDate, Date endDate, int amount, CouponType type, String message, double price, String image ) {
+    public Coupon( int id, String title, Date startDate, Date endDate, int amount, CouponType type, String message, double price, String image ) {
         this.id = id;
         this.title = title;
         this.startDate = startDate;
