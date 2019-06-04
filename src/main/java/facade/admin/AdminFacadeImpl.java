@@ -35,17 +35,18 @@ public class AdminFacadeImpl implements AdminFacade {
         try {
             companyDao.create( company );
         } catch ( UniqueValueException e ) {
-            throw new UniqueValueException( "COMPANY NAME ALREADY EXISTS:" + company.getName(), "admin facade:create company" );
+            throw new UniqueValueException( "Company name already exists: ", company.getName() );
         }
     }
 
     @Override
     public void deleteCompany( Company company ) throws SQLException {
         List<Coupon> coupons = companyDao.getCompanyCoupons( company.getId() );
+
         for ( Coupon coupon : coupons ) {
             couponDao.delete( coupon.getId() );
-
         }
+
         companyDao.delete( company.getId() );
     }
 
@@ -56,16 +57,12 @@ public class AdminFacadeImpl implements AdminFacade {
 
     @Override
     public List<Company> getAllCompanies() throws SQLException {
-        List<Company> companies = companyDao.getAll();
-
-
-        return companies;
+        return companyDao.getAll();
     }
 
     @Override
     public Company getOneCompany( long id ) throws SQLException {
-        Company c = companyDao.getOne( id );
-        return c;
+        return companyDao.getOne( id );
     }
 
     @Override
@@ -89,14 +86,11 @@ public class AdminFacadeImpl implements AdminFacade {
 
     @Override
     public List<Customer> getAllCustomers() throws SQLException {
-        List<Customer> customers = customerDao.getAll();
-
-        return customers;
+        return customerDao.getAll();
     }
 
     @Override
     public Customer getOneCustomer( long id ) throws SQLException {
-        Customer customer = customerDao.getOne( id );
-        return customer;
+        return customerDao.getOne( id );
     }
 }
