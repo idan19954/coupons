@@ -12,4 +12,5 @@ public interface CompanyDao extends Dao<Company> {
     List<Coupon> getCompanyCoupons( int companyId ) throws SQLException;
 
     boolean login( String companyName, String password );
+    void  addCouponToCompany(int companyId ,int id) throws SQLException;
 }

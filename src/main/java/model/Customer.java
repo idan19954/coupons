@@ -6,22 +6,22 @@ import java.util.List;
 
 public class Customer implements ICouponable {
     private List<Coupon> coupons;
-    private long id;
+    private int customerId;
     private String name;
     private String password;
 
-    public Customer( long id, String name, String password ) {
-        this.id = id;
+    public Customer( int customerId, String name, String password ) {
+        this.customerId = customerId;
         this.name = name;
         this.password = password;
     }
 
-    public long getId() {
-        return id;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setId( long id ) {
-        this.id = id;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public String getName() {

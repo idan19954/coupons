@@ -100,7 +100,7 @@ public class CustomerDaoImpl implements CustomerDao {
     public void update( Customer customer ) throws SqlServerException {
         try {
             Statement st = connection.createStatement();
-            String sql = String.format( "UPDATE customers SET password = %s WHERE id = %d", customer.getPassword(), customer.getId() );
+            String sql = String.format( "UPDATE customers SET password = %s WHERE id = %d", customer.getPassword(), customer.getCustomerId() );
             int result = st.executeUpdate( sql );
 
             if ( result == 0 ) {
@@ -114,15 +114,15 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
-    public void delete( int id ) throws SQLException {
+    public void delete( int customerId ) throws SQLException {
         try {
             connection.setAutoCommit( false );
 
             PreparedStatement st = connection.prepareStatement( "DELETE FROM customers WHERE customer_id = ?" );
-            st.setLong( 1, id );
+            st.setLong( 1, customerId );
 
             PreparedStatement st2 = connection.prepareStatement( "DELETE FROM customer_coupon WHERE customer_id = ?" );
-            st2.setLong( 1, id );
+            st2.setLong( 1, customerId );
 
             st.executeUpdate();
             st2.executeUpdate();
@@ -153,7 +153,7 @@ public class CustomerDaoImpl implements CustomerDao {
             ResultSet rs = st.executeQuery();
 
             while ( rs.next() ) {
-                int id = rs.getInt( "customer_id" );
+                int id = rs.getInt( "coupon_id" );
                 String title = rs.getString( "title" );
                 Date start_date = rs.getDate("start_date");
                 Date end_date = rs.getDate( "end_date" );
@@ -174,6 +174,22 @@ public class CustomerDaoImpl implements CustomerDao {
         return customerCoupons;
     }
 
+    @Override
+    public void addCouponToCustomer(int customerId, int id) throws SQLException {
+
+        try {
+            PreparedStatement st = connection.prepareStatement(
+                    "INSERT INTO CUSTOMER_COUPON VALUES (?, ?)");
+            st.setInt(1, customerId);
+            st.setInt(2, id);
+            st.executeUpdate();
+        }catch (SQLException e){
+
+
+        } finally {
+            pool.returnConnection( connection );
+        }
+    }
     @Override
     public boolean login( String customerName, String password ) {
         try {

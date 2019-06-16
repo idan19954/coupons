@@ -40,14 +40,14 @@ public class AdminFacadeImpl implements AdminFacade {
     }
 
     @Override
-    public void deleteCompany( Company company ) throws SQLException {
-        List<Coupon> coupons = companyDao.getCompanyCoupons( company.getId() );
+    public void deleteCompany( int id) throws SQLException {
+        List<Coupon> coupons = companyDao.getCompanyCoupons(id);
 
         for ( Coupon coupon : coupons ) {
             couponDao.delete( coupon.getId() );
         }
 
-        companyDao.delete( company.getId() );
+        companyDao.delete( id );
     }
 
     @Override

@@ -5,7 +5,7 @@ import facade.customer.CustomerFacadeImpl;
 import lib.UserType;
 import lib.db.SQLConnectionPool;
 import tasks.DailyCouponExpirationTask;
-
+import model.Company;
 public class CouponSystem {
     private DailyCouponExpirationTask task;
 

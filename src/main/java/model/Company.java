@@ -66,10 +66,6 @@ public class Company implements ICouponable {
 
     @Override
     public String toString() {
-        return "Company{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", coupons=" + coupons +
-                '}';
+        return "id: "+ id + "name: "+ name+ "email: "+email + "list of coupons: " +coupons;
     }
 }

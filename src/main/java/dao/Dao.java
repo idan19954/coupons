@@ -6,6 +6,10 @@ import lib.exceptions.UniqueValueException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * an interface that match to all the dao classes by generics
+ * @param <T>
+ */
 public interface Dao<T> {
     List<T> getAll() throws SQLException;
 

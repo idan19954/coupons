@@ -12,7 +12,7 @@ import java.util.List;
 public interface AdminFacade extends CouponClientFacade {
     void addNewCompany( Company company ) throws UniqueValueException;
 
-    void deleteCompany( Company company ) throws  SQLException;
+    void deleteCompany( int id ) throws  SQLException;
 
     void updateCompany(Company company ) throws SQLException, SqlServerException;
 

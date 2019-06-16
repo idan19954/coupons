@@ -16,8 +16,22 @@ public class CouponDaoImpl implements CouponDao {
     private Connection connection = pool.getConnection();
 
     @Override
-    public ArrayList<CouponType> getAllCouponsByType() {
-        return null;
+    public List<Coupon> getAllCouponsByType(CouponType type) {
+        List<Coupon> couponsByType = new ArrayList<>();
+        try {
+            PreparedStatement st = connection.prepareStatement("SELECT * FROM coupons WHERE type = ?");
+            st.setString(1, type.toString());
+            ResultSet rs = st.executeQuery();
+            return CompanyDaoImpl.fetchCoupons( rs );
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            }
+        finally {
+            pool.returnConnection( this.connection );
+        }
+
+        return couponsByType;
     }
 
     @Override
@@ -41,7 +55,7 @@ public class CouponDaoImpl implements CouponDao {
     @Override
     public Coupon getOne( int id ) {
         Coupon coupon = null;
-        Connection connection = pool.getConnection();
+
         try {
             PreparedStatement st = connection.prepareStatement( "SELECT * FROM coupons WHERE coupon_id = ?" );
             st.setLong( 1, id );
@@ -73,7 +87,7 @@ public class CouponDaoImpl implements CouponDao {
     public int create( Coupon coupon ) {
         try {
             Statement st = connection.createStatement();
-            String query = String.format( "INSERT INTO coupons (title,startDate endDate,amount,type,message,price,image) VALUES ('%s', '%s', '%s','%s','%s','%s','%s','%')", coupon.getTitle(), coupon.getStartDate(), coupon.getEndDate(), coupon.getAmount(), coupon.getType(), coupon.getMessage(), coupon.getPrice(), coupon.getImage() );
+            String query = String.format( "INSERT INTO coupons (title,start_Date end_Date,amount,type,message,price,image_path) VALUES ('%s', '%s', '%s','%s','%s','%s','%s','%')", coupon.getTitle(), coupon.getStartDate(), coupon.getEndDate(), coupon.getAmount(), coupon.getType(), coupon.getMessage(), coupon.getPrice(), coupon.getImage() );
 
 
             int result = st.executeUpdate( query, Statement.RETURN_GENERATED_KEYS );
@@ -103,7 +117,7 @@ public class CouponDaoImpl implements CouponDao {
     public void update( Coupon coupon ) throws SqlServerException {
         try {
             Statement st = connection.createStatement();
-            String sql = String.format( "UPDATE coupons SET title = %s, startDate = %s, endDate = %s, amount = %s, type = %s,message = %s,price = %s,image = %s, WHERE id = %d", coupon.getTitle(), coupon.getStartDate(), coupon.getEndDate(), coupon.getAmount(), coupon.getType(), coupon.getMessage(), coupon.getPrice(), coupon.getImage(), coupon.getId() );
+            String sql = String.format( "UPDATE coupons SET  end_Date = %s, amount = %s,price = %s = %s, WHERE id = %d",  coupon.getEndDate(), coupon.getAmount(), coupon.getPrice(), coupon.getId() );
             int result = st.executeUpdate( sql );
 
             if ( result == 0 ) {

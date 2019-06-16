@@ -46,6 +46,11 @@ public class CompanyDaoImpl implements CompanyDao {
         return -1;
     }
 
+    /**
+     * delete the company from the companies table and also from company coupon table
+     * @param id
+     * @throws SQLException
+     */
     @Override
     public void delete( int id ) throws SQLException {
         try {
@@ -70,6 +75,11 @@ public class CompanyDaoImpl implements CompanyDao {
 
     }
 
+    /**
+     * update email and password by getting id
+     * @param company
+     * @throws SqlServerException
+     */
     @Override
     public void update( Company company ) throws SqlServerException {
         try {
@@ -87,6 +97,11 @@ public class CompanyDaoImpl implements CompanyDao {
         }
     }
 
+    /**
+     * getting one company by id
+     * @param id
+     * @return company
+     */
     @Override
     public Company getOne( int id ) {
         Company company = null;
@@ -111,13 +126,17 @@ public class CompanyDaoImpl implements CompanyDao {
         return company;
     }
 
+    /**
+     * getting a list of all companies
+     * @return
+     */
     @Override
-    public List<Company> getAll() throws SQLException {
+    public List<Company> getAll()  {
         ArrayList<Company> companies = new ArrayList<>();
 
-        Connection con = pool.getConnection();
+
         try {
-            Statement st = con.createStatement();
+            Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery( "select * from companies" );
 
             while ( rs.next() ) {
@@ -131,36 +150,48 @@ public class CompanyDaoImpl implements CompanyDao {
         } catch ( SQLException e ) {
 
         } finally {
-            pool.returnConnection( con );
+            pool.returnConnection( connection );
         }
 
         return companies;
     }
 
+    /**
+     * getting a list of coupons from one company
+     * @param id
+     * @return coupons
+     * @throws SQLException
+     */
     @Override
-    public List<Coupon> getCompanyCoupons( int companyId ) throws SQLException {
+    public List<Coupon> getCompanyCoupons( int id ) throws SQLException {
         List<Coupon> coupons = new ArrayList<>();
-        Connection con = pool.getConnection();
+
 
         try {
-            Statement st = con.createStatement();
+            Statement st = connection.createStatement();
 
             ResultSet rs = st.executeQuery(
                     "SELECT * FROM coupons c " +
                     "JOIN company_coupon cc on cc.coupon_id = c.coupon_id " +
-                    "WHERE cc.company_id = " + companyId
+                    "WHERE cc.company_id = " + id
             );
 
             return fetchCoupons( rs );
         } catch ( SQLException e ) {
             e.printStackTrace();
         } finally {
-            pool.returnConnection( con );
+            pool.returnConnection( connection );
         }
 
         return coupons;
     }
 
+    /**
+     * a method that convert the coupons from database to java
+     * @param rs
+     * @return
+     * @throws SQLException
+     */
     public static List<Coupon> fetchCoupons( ResultSet rs ) throws SQLException {
         List<Coupon> coupons = new ArrayList<>();
 
@@ -184,12 +215,12 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public boolean login( String companyName, String password ) {
+    public boolean login( String name, String password ) {
         try {
             int exists = 0;
             PreparedStatement st = this.connection.prepareStatement( "SELECT COUNT(*) as `exists` FROM companies WHERE name = ? AND password = ?" );
 
-            st.setString( 1, companyName );
+            st.setString( 1, name );
             st.setString( 2, password );
 
             ResultSet rs = st.executeQuery();
@@ -203,6 +234,28 @@ public class CompanyDaoImpl implements CompanyDao {
             e.printStackTrace();
 
             return false;
+        }
+    }
+
+    /**
+     * insert to join table company_coupon when a company create coupon
+     * @param companyId
+     * @param id
+     * @throws SQLException
+     */
+    @Override
+    public void addCouponToCompany(int companyId, int id) throws SQLException {
+        try {
+            PreparedStatement st = connection.prepareStatement(
+                    "INSERT INTO company_coupon VALUES (?, ?)");
+            st.setInt(1, companyId);
+            st.setInt(2, id);
+            st.executeUpdate();
+        }catch (SQLException e){
+            throw new SQLException("could not insert coupon into the company_coupon table","insert into company_coupon()");
+
+        } finally {
+            pool.returnConnection( connection );
         }
     }
 }
