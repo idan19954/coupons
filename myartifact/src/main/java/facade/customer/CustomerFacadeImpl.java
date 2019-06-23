@@ -12,6 +12,7 @@ import lib.exceptions.SqlServerException;
 import model.Coupon;
 import model.Customer;
 import model.utils.CouponType;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,30 +33,30 @@ public class CustomerFacadeImpl implements CustomerFacade {
 
     @Override
     public void purchaseCoupon( Coupon coupon, Customer customer ) throws SqlServerException, SQLException {
-        List<Coupon> coupons = customerDao.fetchCustomerCoupons(customer.getCustomerId());
+        List<Coupon> coupons = customerDao.fetchCustomerCoupons( customer.getCustomerId() );
         java.sql.Date today = new java.sql.Date( new java.util.Date().getTime() );
 
-        if ( !coupons.contains( coupon ) && coupon.getAmount() >0  && coupon.getEndDate().before( today ) ) {
-            customerDao.addCouponToCustomer(customer.getCustomerId(), coupon.getId());
-            coupon.setAmount(coupon.getAmount() -1);
-            couponDao.update(coupon);
+        if ( !coupons.contains( coupon ) && coupon.getAmount() > 0 && coupon.getEndDate().before( today ) ) {
+            customerDao.addCouponToCustomer( customer.getCustomerId(), coupon.getId() );
+            coupon.setAmount( coupon.getAmount() - 1 );
+            couponDao.update( coupon );
 
-       }
+        }
     }
 
     @Override
-    public List<Coupon> getAllCustomerCoupons(Customer customer )  {
+    public List<Coupon> getAllCustomerCoupons( Customer customer ) {
 
-        return customerDao.fetchCustomerCoupons(customer.getCustomerId());
+        return customerDao.fetchCustomerCoupons( customer.getCustomerId() );
     }
 
     @Override
-    public List<Coupon> getAllPurchasedCouponsByType(CouponType type ,Customer customer) {
-        List<Coupon> allCouponsOfCustomer = customerDao.fetchCustomerCoupons(customer.getCustomerId());
+    public List<Coupon> getAllPurchasedCouponsByType( CouponType type, Customer customer ) {
+        List<Coupon> allCouponsOfCustomer = customerDao.fetchCustomerCoupons( customer.getCustomerId() );
         List<Coupon> allCouponsByType = new ArrayList<>();
-        for (Coupon coupon :allCouponsOfCustomer) {
-            if(coupon.getType().equals(type)){
-                allCouponsByType.add(coupon);
+        for ( Coupon coupon : allCouponsOfCustomer ) {
+            if ( coupon.getType().equals( type ) ) {
+                allCouponsByType.add( coupon );
             }
 
         }
@@ -63,14 +64,13 @@ public class CustomerFacadeImpl implements CustomerFacade {
     }
 
 
-
     @Override
-    public List<Coupon> getCustomerCouponsByPrice(double price ,Customer customer ) throws SqlServerException {
-        List<Coupon> allCouponsOfCustomer = customerDao.fetchCustomerCoupons(customer.getCustomerId());
+    public List<Coupon> getCustomerCouponsByPrice( double price, Customer customer ) throws SqlServerException {
+        List<Coupon> allCouponsOfCustomer = customerDao.fetchCustomerCoupons( customer.getCustomerId() );
         List<Coupon> allCouponsByPrice = new ArrayList<>();
-        for (Coupon coupon :allCouponsOfCustomer) {
-            if(coupon.getPrice()< price){
-                allCouponsByPrice.add(coupon);
+        for ( Coupon coupon : allCouponsOfCustomer ) {
+            if ( coupon.getPrice() < price ) {
+                allCouponsByPrice.add( coupon );
             }
 
         }

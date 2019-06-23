@@ -1,21 +1,26 @@
 package services;
 
+
+import facade.admin.AdminFacadeImpl;
+import model.Customer;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
+import java.sql.SQLException;
 
-@Path( "/hello" )
+@Path( "/customer" )
 public class CustomerService {
 
     @GET
-    @Path( "/{param}" )
-    public Response getMsg( @PathParam( "param" ) String msg ) {
+    @Path( "/{customerId}" )
+    public Response getCustomer( @PathParam( "customerId" ) int customerId ) throws SQLException {
+        AdminFacadeImpl adminFacade = new AdminFacadeImpl();
+        Customer customer = adminFacade.getOneCustomer( customerId );
 
-        String output = "Jersey say : " + msg;
+        System.out.println( customerId );
 
-        return Response.status( 200 ).entity( output ).build();
-
+        return null;
     }
-
 }

@@ -12,11 +12,11 @@ import java.util.List;
 public interface AdminFacade extends CouponClientFacade {
     void addNewCompany( Company company ) throws UniqueValueException;
 
-    void deleteCompany( int id ) throws  SQLException;
+    void deleteCompany( int id ) throws SQLException;
 
-    void updateCompany(Company company ) throws SQLException, SqlServerException;
+    void updateCompany( Company company ) throws SQLException, SqlServerException;
 
-    List<Company> getAllCompanies()throws SQLException;
+    List<Company> getAllCompanies() throws SQLException;
 
     Company getOneCompany( int id ) throws SQLException;
 
@@ -26,7 +26,7 @@ public interface AdminFacade extends CouponClientFacade {
 
     void updateCustomer( Customer customer ) throws SQLException;
 
-    List<Customer> getAllCustomers()throws SQLException;
+    List<Customer> getAllCustomers() throws SQLException;
 
     Customer getOneCustomer( int id ) throws SQLException;
 }
