@@ -20,7 +20,7 @@ public interface AdminFacade extends CouponClientFacade {
 
     Company getOneCompany( int id ) throws SQLException;
 
-    void addNewCustomer( Customer customer ) throws UniqueValueException;
+    int addNewCustomer( Customer customer ) throws UniqueValueException;
 
     void deleteCustomer( int id ) throws SQLException;
 

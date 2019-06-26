@@ -1,13 +1,23 @@
 package model;
 
-import java.util.List;
-import model.utils.ICouponable;
+import lombok.Data;
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonProperty;
 
-public class Customer implements ICouponable {
+import java.util.List;
+
+@Data
+public class Customer {
     private List<Coupon> coupons;
     private int customerId;
     private String name;
     private String password;
+
+    @JsonCreator
+    public Customer( @JsonProperty( "name" ) String name, @JsonProperty( "password" ) String password ) {
+        this.name = name;
+        this.password = password;
+    }
 
     public Customer( int customerId, String name, String password ) {
         this.customerId = customerId;
@@ -15,47 +25,8 @@ public class Customer implements ICouponable {
         this.password = password;
     }
 
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword( String password ) {
-        this.password = password;
-    }
-
-    public void setName( String name ) {
-        this.name = name;
-    }
-
-    public List<Coupon> getCoupons() {
-        return this.coupons;
-    }
-
-    public void setCoupons( List<Coupon> coupons ) {
-        this.coupons = coupons;
-    }
-
-    @Override
-    public List<Coupon> getAllCoupons() {
-        return this.coupons;
-    }
-
     @Override
     public String toString() {
-        return "Customer{" +
-                "coupons=" + coupons +
-                '}';
+        return "Customer{" + "coupons=" + coupons + '}';
     }
 }

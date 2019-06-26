@@ -65,7 +65,6 @@ public class CustomerDaoImpl implements CustomerDao {
         }
 
         return customer;
-
     }
 
     @Override

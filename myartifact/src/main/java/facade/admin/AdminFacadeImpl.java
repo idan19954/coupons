@@ -66,8 +66,8 @@ public class AdminFacadeImpl implements AdminFacade {
     }
 
     @Override
-    public void addNewCustomer( Customer customer ) throws UniqueValueException {
-        customerDao.create( customer );
+    public int addNewCustomer( Customer customer ) throws UniqueValueException {
+        return customerDao.create( customer );
     }
 
     @Override
